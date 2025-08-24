@@ -6,14 +6,16 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AccountComponent } from './pages/account/account.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { animation } from '@angular/animations';
 
 const routes: Routes = [
-  {path:'',component: HomeComponent},
-  {path:'reports',component:ReportsComponent},
-  {path:'settings',component:SettingsComponent,children:[
-    {path:'profile',component:ProfileComponent},
-    {path:'account',component:AccountComponent},
-    {path:'logout',component:LogoutComponent}
+  {path:'',component: HomeComponent, data:{animation:'Home'}},
+  {path:'reports',component:ReportsComponent, data:{animation:'Reports'}},
+  {path:'settings',component:SettingsComponent , data:{animation:'Settings'},children:[
+    {path:'',redirectTo:'profile', pathMatch:'full'},
+    {path:'profile',component:ProfileComponent,data:{animation:'Profile'}},
+    {path:'account',component:AccountComponent,data:{animation:'Account'}},
+    {path:'logout',component:LogoutComponent,data:{animation:'Logout'}}
   ]},
   {path:'**',redirectTo:''}
 ];
