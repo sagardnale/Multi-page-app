@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,11 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   error: string = '';
-  showPassword = false;
 
   constructor(
     private readonly auth: AuthService,
-    private readonly router: Router
+    private readonly router: Router,
+    public readonly shared: SharedService
   ) {}
 
   onSubmit() {
@@ -24,8 +25,5 @@ export class LoginComponent {
     } else {
       this.error = 'Invalid credentials';
     }
-  }
-  togglePassword() {
-    this.showPassword = !this.showPassword;
   }
 }

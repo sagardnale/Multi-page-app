@@ -10,10 +10,10 @@
             <div class="mb-3">
                 <label for="password">Password</label>
                 <div class="input-group">
-                    <input class="form-control" [type]="showPassword ? 'text':'password'" name="password" id="password"
+                    <input class="form-control" [type]="shared.getShowPassword() ? 'text':'password'" name="password" id="password"
                         [(ngModel)]="password">
-                    <button type="button" class="btn btn-outline-secondary border" (click)="togglePassword()">
-                        <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash': 'bi-eye'"></i>
+                    <button type="button" class="btn btn-outline-secondary border" (click)="shared.togglePassword()">
+                        <i class="bi" [ngClass]="shared.getShowPassword() ? 'bi-eye-slash': 'bi-eye'"></i>
                     </button>
                 </div>
 
