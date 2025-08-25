@@ -9,6 +9,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
   {path:'',component: HomeComponent, data:{animation:'Home'}},
@@ -19,7 +20,7 @@ const routes: Routes = [
     {path:'account',component:AccountComponent,data:{animation:'Account'}},
     {path:'logout',component:LogoutComponent,data:{animation:'Logout'}}
   ]},
-  {path:'login',component:LogoutComponent},
+  {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent},
