@@ -6,7 +6,9 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AccountComponent } from './pages/account/account.component';
 import { LogoutComponent } from './pages/logout/logout.component';
-import { animation } from '@angular/animations';
+import { SignupComponent } from './auth/signup/signup.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 
 const routes: Routes = [
   {path:'',component: HomeComponent, data:{animation:'Home'}},
@@ -17,6 +19,10 @@ const routes: Routes = [
     {path:'account',component:AccountComponent,data:{animation:'Account'}},
     {path:'logout',component:LogoutComponent,data:{animation:'Logout'}}
   ]},
+  {path:'login',component:LogoutComponent},
+  {path:'signup',component:SignupComponent},
+  {path:'forgot-password',component:ForgotPasswordComponent},
+  {path:'reset-password',component:ResetPasswordComponent},
   {path:'**',redirectTo:''}
 ];
 
