@@ -1,6 +1,7 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,6 +27,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'multi-page-app';
+  constructor(public auth:AuthService){
+
+  }
   getRouterOutletState(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }

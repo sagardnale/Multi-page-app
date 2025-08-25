@@ -10,20 +10,21 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {path:'',component: HomeComponent, data:{animation:'Home'}},
-  {path:'reports',component:ReportsComponent, data:{animation:'Reports'}},
-  {path:'settings',component:SettingsComponent , data:{animation:'Settings'},children:[
+  {path:'reports',component:ReportsComponent,canActivate:[AuthGuard], data:{animation:'Reports'}},
+  {path:'settings',component:SettingsComponent ,canActivate:[AuthGuard  ], data:{animation:'Settings'},children:[
     {path:'',redirectTo:'profile', pathMatch:'full'},
     {path:'profile',component:ProfileComponent,data:{animation:'Profile'}},
     {path:'account',component:AccountComponent,data:{animation:'Account'}},
     {path:'logout',component:LogoutComponent,data:{animation:'Logout'}}
   ]},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent},
-  {path:'forgot-password',component:ForgotPasswordComponent},
-  {path:'reset-password',component:ResetPasswordComponent},
+  {path:'login',component:LoginComponent ,data:{animation:'Login'}},
+  {path:'signup',component:SignupComponent,data:{animation:'Signup'}},
+  {path:'forgot-password',component:ForgotPasswordComponent,data:{animation:'Forgot'}},
+  {path:'reset-password',component:ResetPasswordComponent,data:{animation:'Reset'}},
   {path:'**',redirectTo:''}
 ];
 
