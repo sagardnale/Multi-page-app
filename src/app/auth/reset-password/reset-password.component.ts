@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent {
-
+  constructor(public readonly shared:SharedService){}
 }
