@@ -5,20 +5,27 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  email:string='';
-  password:string='';
-  error:string='';
+  email: string = '';
+  password: string = '';
+  error: string = '';
+  showPassword = false;
 
-  constructor(private readonly auth:AuthService,private readonly router:Router){}
+  constructor(
+    private readonly auth: AuthService,
+    private readonly router: Router
+  ) {}
 
-onSubmit(){
-  if(this.auth.login(this.email,this.password)){
-    this.router.navigate(['/reports']);
-  }else{
-    this.error = "Invalid credentials";
+  onSubmit() {
+    if (this.auth.login(this.email, this.password)) {
+      this.router.navigate(['/reports']);
+    } else {
+      this.error = 'Invalid credentials';
+    }
   }
-}
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 }
