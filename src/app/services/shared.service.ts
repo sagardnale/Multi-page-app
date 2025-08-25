@@ -5,11 +5,20 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
   showPassword:boolean=false;
-  getShowPassword(){
-    return this.showPassword;
-  }
+  showConfirmPassword:boolean=false;
+ 
   constructor() { }
   togglePassword(){
     this.showPassword = !this.showPassword;
+  }
+   getShowPassword(){
+    return this.showPassword;
+  }
+
+  getShowConfirmPassword(){
+    return this.showConfirmPassword;
+  }
+  toggleConfirmPassword(){
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 }
