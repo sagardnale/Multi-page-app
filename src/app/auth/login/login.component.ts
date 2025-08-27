@@ -28,10 +28,8 @@ export class LoginComponent {
     })
   }
   onSubmit() {
-    if (this.auth.login(this.email, this.password)) {
-      this.router.navigate(['/reports']);
-    } else {
-      this.error = 'Invalid credentials';
+    if(this.loginForm.valid){
+        console.log(this.loginForm.value);
     }
   }
 }
