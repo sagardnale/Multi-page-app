@@ -27,6 +27,10 @@ export class LoginComponent {
       password:['',[Validators.required,Validators.minLength(6)]]
     })
   }
+
+  getLoginControl(controlName:any){
+    return this.loginForm.get(controlName);
+  }
   onSubmit() {
     if(this.loginForm.valid){
         console.log(this.loginForm.value);
