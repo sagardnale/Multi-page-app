@@ -14,6 +14,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass:'toast-top-right',
+      preventDuplicates:true,
+      progressBar:true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
