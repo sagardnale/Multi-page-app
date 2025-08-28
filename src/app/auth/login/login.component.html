@@ -28,11 +28,15 @@
                     <span *ngIf="getLoginControl('password')?.errors?.['minLength']" class="text-danger">Password should
                         be minimum 6 characters</span>
                 </p>
+
+            </div>
+            <div class="d-flex justify-content-end mb-3">
+                <a routerLink="/forgot-password">Forgot Password </a>
             </div>
             <button class="btn btn-primary w-100" type="submit"><i class="bi bi-box-arrow-in-right"></i> Login</button>
         </form>
         <div class="d-flex flex-column align-items-center justify-content-center  mt-3">
-            <a routerLink="/forgot-password">Forgot Password </a>
+
             <a routerLink="/signup">Create Account</a>
         </div>
     </div>
