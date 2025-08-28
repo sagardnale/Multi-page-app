@@ -1,28 +1,36 @@
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-sm p-4" style="max-width: 40%; width: 100%;">
         <h3 class="text-center mb-3"><i class="bi bi-box-arrow-in-right"></i> Login</h3>
-        <form (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" [(ngModel)]="email" class="form-control"
+                <input type="email" name="email" id="email" formControlName="email" class="form-control"
                     placeholder="Enter email">
+                <p *ngIf="getLoginControl('email')?.invalid && getLoginControl('email')?.touched">
+                    <span *ngIf="getLoginControl('email')?.errors?.['required']" class="text-danger">Email is
+                        required</span>
+                    <span *ngIf="getLoginControl('email')?.errors?.['email']" class="text-danger">Enter valid
+                        email</span>
+                </p>
             </div>
             <div class="mb-3">
                 <label for="password">Password</label>
                 <div class="input-group">
-                    <input class="form-control" [type]="shared.getShowPassword() ? 'text':'password'" name="password" id="password"
-                        [(ngModel)]="password">
+                    <input class="form-control" [type]="shared.getShowPassword() ? 'text':'password'" name="password"
+                        id="password" formControlName="password" placeholder="Password">
                     <button type="button" class="btn btn-outline-secondary border" (click)="shared.togglePassword()">
                         <i class="bi" [ngClass]="shared.getShowPassword() ? 'bi-eye-slash': 'bi-eye'"></i>
                     </button>
                 </div>
-
+                <p *ngIf="getLoginControl('password')?.invalid && getLoginControl('password')?.touched">
+                    <span *ngIf="getLoginControl('password')?.errors?.['required']" class="text-danger">Password is
+                        required</span>
+                    <span *ngIf="getLoginControl('password')?.errors?.['minLength']" class="text-danger">Password should
+                        be minimum 6 characters</span>
+                </p>
             </div>
             <button class="btn btn-primary w-100" type="submit"><i class="bi bi-box-arrow-in-right"></i> Login</button>
         </form>
-        <div *ngIf="error" class="alert alert-danger mt-2">
-            {{error}}
-        </div>
         <div class="d-flex flex-column align-items-center justify-content-center  mt-3">
             <a routerLink="/forgot-password">Forgot Password </a>
             <a routerLink="/signup">Create Account</a>
