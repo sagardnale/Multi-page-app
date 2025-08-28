@@ -1,25 +1,37 @@
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-sm p-4" style="max-width: 40%; width: 100%;">
         <h3 class="text-center mb-3"><i class="bi bi-person-pluse"></i> Signup</h3>
-        <form>
+        <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
             <div class="mb-3">
                 <label for="name">Name</label>
-                <input class="form-control" type="text" name="name" id="name" placeholder="Full Name">
+                <input class="form-control" formControlName="name" type="text" name="name" id="name" placeholder="Full Name">
+                <p *ngIf="getSignUpControl('name')?.invalid && getSignUpControl('name')?.touched">
+                    <span *ngIf="getSignUpControl('name')?.errors?.['required']" class="text-danger">Name is required</span>
+                    <span *ngIf="getSignUpControl('name')?.errors?.['minlength']" class="text-danger">Name should contain minimum 5 character</span>
+                </p>
             </div>
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input class="form-control" type="email" name="email" id="email" placeholder="Email" >
+                <input class="form-control" formControlName="email" type="email" name="email" id="email" placeholder="Email" >
+                <p *ngIf="getSignUpControl('email')?.invalid && getSignUpControl('email')?.touched">
+                    <span *ngIf="getSignUpControl('email')?.errors?.['required']" class="text-danger">Email is required</span>
+                    <span *ngIf="getSignUpControl('email')?.errors?.['email']" class="text-danger">Email is invalid</span>
+                </p>
             </div>
             <div class="mb-3">
                 <label for="password">Password</label>
                  <div class="input-group">
-                    <input [type]="shared.getShowPassword() ? 'text':'password'" class="form-control" placeholder="Password">
+                    <input [type]="shared.getShowPassword() ? 'text':'password'" formControlName="password" class="form-control" placeholder="Password">
                     <button type="button" class="btn btn-outline-secondary border" (click)="shared.togglePassword()">
                         <i class="bi" [ngClass]="shared.getShowPassword() ? 'bi-eye-slash' : 'bi-eye'"></i>
                     </button>
                  </div>
+                 <p *ngIf="getSignUpControl('password')?.invalid && getSignUpControl('password')?.touched">
+                    <span *ngIf="getSignUpControl('password')?.errors?.['required']" class="text-danger">Password is required</span>
+                    <span *ngIf="getSignUpControl('password')?.errors?.['minlength']" class="text-danger">Password should minimum 6 characters</span>
+                 </p>
             </div>
-            <button class="btn btn-success w-100"><i class="bi bi-person-check"></i> Create Account</button>
+            <button type="submit" class="btn btn-success w-100"><i class="bi bi-person-check"></i> Create Account</button>
         </form>
         <div class="text-center mt-3">
              <a routerLink="/login">Already have an account? Login</a>
