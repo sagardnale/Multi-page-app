@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,8 @@ export class SignupComponent {
   signupForm!: FormGroup;
   constructor(
     public readonly shared: SharedService,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly toast: ToastService
   ) {}
 
   ngOnInit() {
@@ -28,7 +30,9 @@ export class SignupComponent {
 
   onSignup() {
     if (this.signupForm.valid) {
-      console.log('sign up form input values', this.signupForm.value);
+      this.toast.success('Account created successfully!', 'Welcome 🎉');
+    } else {
+      this.toast.warning('Check your form details', 'Validation Warning');
     }
   }
 }
