@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
 import { By } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -9,12 +10,16 @@ describe('LoginComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent]
-    });
-    fixture = TestBed.createComponent(LoginComponent);
+      declarations: [LoginComponent],
+      imports:[ReactiveFormsModule,ToastrModule.forRoot()]
+    }).compileComponents();
+  });
+
+  beforeEach(()=>{
+        fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy();
